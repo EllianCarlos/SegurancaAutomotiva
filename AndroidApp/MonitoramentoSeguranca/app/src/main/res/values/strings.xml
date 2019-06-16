@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MonitoramentoSeguranca</string>
+    <string name="keyEntryHolder">Senha de Acesso</string>
+    <string name="keyTextView">Digite sua senha de acesso:</string>
+    <string name="buttonSendKey">Enviar</string>
+    <string name="textViewChamadaSemMaoVolante">Tempo sem a mão no volante</string>
+    <string name="textViewDadoSemMaoVolante">70%</string>
+    <string name="textViewChamadaUmaMaoVolante">Tempo uma mão no volante</string>
+    <string name="textViewDadoUmaMaoVolante">70%</string>
+    <string name="textViewChamadaVelocidade">Velocidade Média</string>
+    <string name="textViewDadoVelocidade">70 km/h</string>
+    <string name="textViewChamadaEmerg">Emergência</string>
+    <string name="textViewDadoEmerg">Ok!</string>
+    <string name="buttonRefresh">Recarregar</string>
+    <string name="buttonDone">Pronto</string>
+    <string name="connection_error">Erro de conexão</string>
+    <string name="botaoAtivado">Emergência!</string>
+    <string name="botaoDesativado">Ok!</string>
+    <string name="textViewChamadaTempo">Última Atualização</string>
+    <string name="textViewDadosTempo">15 h atrás</string>
+    <string name="textViewChamadaTempMotor">Temperatura do motor:</string>
+    <string name="textViewDadosTempMotor">70 ºC</string>
+</resources>
