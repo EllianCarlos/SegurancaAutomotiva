@@ -20,4 +20,5 @@
     <string name="textViewDadosTempo">15 h atrás</string>
     <string name="textViewChamadaTempMotor">Temperatura do motor:</string>
     <string name="textViewDadosTempMotor">70 ºC</string>
+    <string name="textViewGraph">Gráfico da velocidade por instância:</string>
 </resources>

@@ -72,7 +72,7 @@
                     android:layout_weight="1"
                     android:text="@string/textViewChamadaTempo"
                     android:textAlignment="viewStart"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:verticalScrollbarPosition="defaultPosition" />
 
                 <TextView
@@ -84,7 +84,7 @@
                     android:text="@string/textViewDadosTempo"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/calmBlue"
-                    android:textSize="32sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -102,7 +102,7 @@
                     android:layout_weight="1"
                     android:text="@string/textViewChamadaSemMaoVolante"
                     android:textAlignment="viewStart"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:verticalScrollbarPosition="defaultPosition" />
 
                 <TextView
@@ -114,7 +114,7 @@
                     android:text="@string/textViewDadoSemMaoVolante"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/calmBlue"
-                    android:textSize="32sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -133,7 +133,7 @@
                     android:layout_weight="1"
                     android:text="@string/textViewChamadaUmaMaoVolante"
                     android:textAlignment="viewStart"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:verticalScrollbarPosition="defaultPosition" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:text="@string/textViewDadoUmaMaoVolante"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/calmBlue"
-                    android:textSize="32sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -164,7 +164,7 @@
                     android:layout_weight="1"
                     android:text="@string/textViewChamadaVelocidade"
                     android:textAlignment="viewStart"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textViewDadoVelocidade"
@@ -175,7 +175,7 @@
                     android:text="@string/textViewDadoVelocidade"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/calmBlue"
-                    android:textSize="32sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -195,7 +195,7 @@
                     android:text="@string/textViewChamadaEmerg"
                     android:textAlignment="viewStart"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textViewDadoEmerg"
@@ -206,7 +206,7 @@
                     android:text="@string/textViewDadoEmerg"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/calmBlue"
-                    android:textSize="32sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -225,7 +225,7 @@
                     android:text="@string/textViewChamadaTempMotor"
                     android:textAlignment="viewStart"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textViewDadosTempMotor"
@@ -236,8 +236,35 @@
                     android:text="@string/textViewDadosTempMotor"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/calmBlue"
-                    android:textSize="32sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewNomeGraph"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:text="@string/textViewGraph"
+                android:textAlignment="center"
+                android:textColor="#1762A0"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutHorinzontalGraph"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/graphVel"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_height="200dip"
+                    />
             </LinearLayout>
 
         </LinearLayout>
@@ -263,6 +290,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ScrollView" />
+        app:layout_constraintTop_toTopOf="@+id/ScrollView"
+        android:lines="2"/>
 
 </android.support.constraint.ConstraintLayout>

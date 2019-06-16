@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickVai(View view) {
-        EditText editText = findViewById(R.id.editTextKey);
-        Intent intent = new Intent(this, DadosPrincipais.class).putExtra("pass",editText.getText());
+        EditText editText = (EditText) findViewById(R.id.editTextKey);
+        Intent intent = new Intent(this, DadosPrincipais.class).putExtra("pass",editText.getText().toString());
+        System.out.println("pass sended:" + editText.getText());
         startActivity(intent);
     }
 

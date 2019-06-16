@@ -1,13 +1,21 @@
 package e.ellian.monitoramentoseguranca;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
 import java.util.ArrayList;
 
@@ -24,7 +32,7 @@ public class DadosPrincipais extends FragmentActivity implements DownloadCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_principais);
         password = getIntent().getStringExtra("pass");
-        System.out.println(password);
+        System.out.println("pass got:" + password);
         mDataText = findViewById(R.id.textView2);
         mDataText.setVisibility(View.INVISIBLE);
         mNetworkFragment = NetworkFragment.getInstance(getSupportFragmentManager(),
@@ -33,13 +41,26 @@ public class DadosPrincipais extends FragmentActivity implements DownloadCallbac
         textViewTempo.setVisibility(View.INVISIBLE);
         TextView textViewChamaTempo = (TextView) findViewById(R.id.textViewChamadaTempo);
         textViewChamaTempo.setVisibility(View.INVISIBLE);
+        TextView textViewErro = (TextView) findViewById(R.id.textViewError);
+        textViewChamaTempo.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        TextView textViewErro = (TextView) findViewById(R.id.textViewError);
+        textViewErro.setVisibility(View.VISIBLE);
+        textViewErro.setText("Página Recarregando....");
+        refresh((View)findViewById(R.layout.activity_dados_principais));
+        ScrollView scrollView = (ScrollView) findViewById(R.id.ScrollView);
+        scrollView.setVisibility(View.INVISIBLE);
     }
 
     protected void errorHandler(String error){
         ScrollView scrollView = (ScrollView) findViewById(R.id.ScrollView);
         scrollView.setVisibility(View.INVISIBLE);
         TextView textViewError = (TextView) findViewById(R.id.textViewError);
-        textViewError.setText("Erro: " + error + "\t   tente recarregar.");
+        textViewError.setText("Erro: " + error + "\n   tente recarregar.");
         textViewError.setTextColor(getColor(R.color.dangerRed));
         textViewError.setVisibility(View.VISIBLE);
     }
@@ -72,12 +93,20 @@ public class DadosPrincipais extends FragmentActivity implements DownloadCallbac
         textViewTempMotor.setText(String.valueOf(tempMotor).concat(" ºC"));
     }
 
+    protected void setGraph(DataReady dataReady){
+        GraphView graph = (GraphView) findViewById(R.id.graphVel);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataReady.data());
+        graph.addSeries(series);
+    }
+
+
     public void refresh(View view) {
         startDownload();
     }
     public void done(View view){
         finishDownloading();
-
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void startDownload() {
@@ -97,6 +126,7 @@ public class DadosPrincipais extends FragmentActivity implements DownloadCallbac
             DataReady dataReady = new DataReady(lista);
             if(lista.size()>=1){
                 setAll(lista.get(lista.size()-1).getVelocidade(),lista.get(lista.size()-1).getTempMotor(),lista.get(lista.size()-1).isAlert(),dataReady.getPorcUmaMao(lista.size()-1,true),dataReady.getPorcSemMao(lista.size()-1,true));
+                setGraph(dataReady);
                 //setAll();
             } else {
                 errorHandler("ERRO ADIQUIRINDO A MENSAGEM");

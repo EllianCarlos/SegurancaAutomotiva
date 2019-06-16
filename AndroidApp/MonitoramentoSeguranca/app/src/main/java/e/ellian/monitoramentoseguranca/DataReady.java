@@ -1,10 +1,10 @@
 package e.ellian.monitoramentoseguranca;
 
-import android.support.annotation.NonNull;
+import com.jjoe64.graphview.series.DataPoint;
 
-import java.security.spec.RSAPublicKeySpec;
 import java.util.ArrayList;
-import java.util.Collection;
+
+import static java.lang.Double.parseDouble;
 
 public class DataReady{
     ArrayList<Dados> lista;
@@ -140,5 +140,31 @@ public class DataReady{
             }
         }
         return porc;
+    }
+
+    public ArrayList<Integer> getAllVelPoints(){
+        ArrayList<Integer> velocidades = new ArrayList<Integer>();
+        for(int i = 0; i < this.lista.size();i++){
+            velocidades.add(i, lista.get(i).getVelocidade());
+        }
+        return velocidades;
+    }
+
+    public ArrayList<DataPoint> getAllVelDataPoints(){
+        ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+        for(int i = 0; i < this.lista.size();i++){
+            points.add(new DataPoint(i,this.lista.get(i).getVelocidade()));
+        }
+        return points;
+    }
+
+    public DataPoint[] data(){
+        int n=this.lista.size();     //to find out the no. of data-points
+        DataPoint[] values = new DataPoint[n];     //creating an object of type DataPoint[] of size 'n'
+        for(int i=0;i<n;i++){
+            DataPoint v = new DataPoint(i,this.lista.get(i).getVelocidade());
+            values[i] = v;
+        }
+        return values;
     }
 }
