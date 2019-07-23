@@ -9,11 +9,11 @@ O projeto teve como seu objetivo principal aumentar a atenção do motorista dur
 
 
 ## Principais Materiais
-- [Arduino Mega]
-- [ESP32 WROOM]
-- [GSM/GPRS SIM900 SHIELD]
-- [CAN BUS 2.0 SHIELD]
-- [Android Studio]
+- Arduino Mega
+- ESP32 WROOM
+- GSM/GPRS SIM900 SHIELD
+- CAN BUS 2.0 SHIELD
+- Android Studio
 
 Além dos principais materiais, se utilizou um dispositivo chamado canalyzer para simular as tramas da Rede CAN de um carro qualquer. 
 
